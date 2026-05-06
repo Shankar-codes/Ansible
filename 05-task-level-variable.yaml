@@ -1,0 +1,19 @@
+- name: play level variables
+  hosts: local
+  connection: local
+  # play level variable
+  vars:
+    COURSE: Ansible
+    DURATION: 10HRS
+    TRAINER: Shankar
+  tasks:
+  - name: task level variables
+    #task lavel variable
+    # task level variable will override the play level variable
+    # priority : task level variable > play level variable
+    vars:
+        COURSE: DevOps with Azure
+    ansible.builtin.debug:
+      msg: "Course : {{ COURSE }},
+            Duration : {{ DURATION }},
+            Trainer : {{ TRAINER }}"
