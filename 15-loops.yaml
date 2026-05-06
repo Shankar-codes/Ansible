@@ -1,0 +1,13 @@
+- name: loops
+  hosts: local
+  connection: local
+
+  tasks:
+  - name: print the clouds
+    ansible.builtin.debug:
+       msg: "{{ item }}
+    
+    loop:
+    - AWS
+    - GCP
+    - Azure
