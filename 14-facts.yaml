@@ -3,12 +3,14 @@
   connection: local
   become: yes
   tasks:
+#if the os family is redhat, then install nginx using dnf
   - name: install nginx if redhat
     ansible.builtin.dnf:
       name: nginx
       state: latest
     when: ansible_os_family == "RedHat"
 
+#if the os family is debian, then install nginx using apt
   - name: install nginx if debian
     ansible.builtin.apt:
       name: nginx
