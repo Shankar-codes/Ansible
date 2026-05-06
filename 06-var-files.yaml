@@ -1,0 +1,14 @@
+- name: calling variable from another yaml file
+  hosts: local
+  connection: local
+  vars:
+  - course.yaml
+  
+  tasks:
+  - name: print the course info
+    ansible.builtin.debug:
+      msg: "Course name: {{ COURSE }},
+            Duration: {{ Duration }},
+            Trainer: {{ Trainer }}"
+            
+		
