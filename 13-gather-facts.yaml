@@ -1,0 +1,9 @@
+# This playbook gathers facts about the local system and displays them using the debug module.
+- name: gather facts
+  hosts: local
+  connection: local
+  tasks:
+  - name: facts
+    ansible.builtin.debug:
+      msg: "The details of the system are {{ ansible_facts }}"
+	
