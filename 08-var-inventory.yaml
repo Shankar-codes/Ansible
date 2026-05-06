@@ -1,0 +1,10 @@
+- name: variable from inventory.ini
+  hosts: local
+  connection: local
+  #if you want to use variables from inventory.ini, you need to set the connection to local
+  tasks:
+  - name: print variables from inventory.ini
+    ansible.builtin.debug:
+      msg: "Course: {{ COURSE }}, 
+            Duration: {{ DURATION }}, 
+            Trainer: {{ TRAINER }}"
