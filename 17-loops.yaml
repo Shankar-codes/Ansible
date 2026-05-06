@@ -1,0 +1,15 @@
+- name: install packages
+  hosts: local
+  connection: local
+  become: yes
+
+  tasks:
+  - name: package names
+    ansible.builtin.package:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+
+  loop:
+  - { name: "nginx", state:"absent" } #absent means remove the package if it is installed
+  - { name: "mysql", state:"absent" } 
+  - { name: "zip", state:"latest" } #latest means install the latest version of the package
