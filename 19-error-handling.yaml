@@ -1,0 +1,18 @@
+- name: user creation
+  hosts: local
+  connection: local
+  become: yes
+
+  tasks:
+    - name: check user exits or not
+      ansible.builtin.command: id ellamma
+      register: user_creation
+      ignore_errors: yes
+  
+    - name: print the user creation result
+      ansible.builtin.debug:
+        msg: "User creation result: {{ user_creation }}"
+    
+    - name: create user
+      ansible.builtin.command: useradd ellamma
+      when: user_creation.rc != 0
