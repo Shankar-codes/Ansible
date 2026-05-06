@@ -1,0 +1,96 @@
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+    skills: Linux, Ansible, Python, Docker
+    name: Shankar.Ellamma
+    gmail: info@gmail.com
+    IPaddress: "19222.168.1.100"
+    tags:
+      application: payment
+      environment: dev
+    listtags:
+      - key : application
+        value: payment
+      - key : environment
+        value: dev
+  tasks:
+  - name: declaring the default value for a variable
+    ansible.builtin.debug:
+      msg: "Hello, {{ name | default('SE') }}"
+
+  #string to list
+  - name: converting string to list
+    ansible.builtin.debug:
+      msg: "Skills: {{ skills | split(',') }}"
+
+  #dictionary to list
+  - name: converting dictionary to list
+    ansible.builtin.debug:
+      msg: "Tags: {{ tags | dict2items }}"
+
+  #list to dictionary
+  - name: converting list to dictionary
+    ansible.builtin.debug:
+      msg: "List Tags: {{ listtags | items2dict }}"
+
+  #read yaml and take it into variable
+  - name: read yaml and take it into variable
+    ansible.builtin.set_fact:
+      yaml_data: "{{ lookup('file', 'data.yaml') | from_yaml }}"
+
+  #convert yaml in to json
+  - name: convert yaml in to json
+    ansible.builtin.debug:
+      msg: "Yaml to Json: {{ yaml_data | to_json }}"
+  
+  #convert json to file
+  - name: convert json to file
+    ansible.builtin.copy:
+      content: "{{ yaml_data | to_nice_json }}"
+
+  #convert to upper case
+  - name: convert to upper case
+    ansible.builtin.debug:
+      msg: "Upper case: {{ name | upper }}"
+
+  #convert to lower case
+  - name: convert to lower case
+    ansible.builtin.debug:
+      msg: "Lower case: {{ gmail | lower }}"
+
+  #check IP address is valid or not
+  - name: check IP address is valid or not
+    ansible.builtin.debug:
+      msg: "Is valid IP: {{ IPaddress | ansible.utils.ipv4 }}"
+  
+  #grep for root in /etc/passwd
+  - name: grep for root in /etc/passwd
+    ansible.builtin.shell: cat /etc/passwd | grep root
+    register: grep_result
+
+  #print to grep result
+  - name: print the grep result
+    ansible.builtin.debug:
+      msg: "Grep result: {{ grep_result }}"
+    
+  #redirect the grep result to a file
+  - name: redirect the grep result to a file
+    ansible.builtin.command: ls -ltr > /tmp/grep_result.txt
+    register: redirect_result
+    ignore_errors: true
+
+  #print the redirect result
+  - name: print the redirect result
+    ansible.builtin.debug:
+      msg: "Redirect result: {{ redirect_result }}"
+
+  #redirect the output using shell
+  - name: redirect the output using shell
+    ansible.builtin.shell: ls -ltr > /tmp/ls_result.txt
+    register: shell_redirect_result
+  
+  #print the shell redirect result
+  - name: print the shell redirect result
+    ansible.builtin.debug:
+      msg: "Shell Redirect result: {{ shell_redirect_result }}"

@@ -1,0 +1,10 @@
+- name: "Shankar.Ellamma"
+  dob: "01-01-2023"
+  age: 26
+  addresses:
+    # Object
+  - doorNo: 4-32
+    street: "bangalore road"
+    city: bangalore
+    pin: 567893
+    type: current
