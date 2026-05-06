@@ -1,0 +1,17 @@
+#var preference from different sources
+#1. args passed to playbook or command line
+#2. from task
+#3. files
+#4. prompted from user
+#5. play level
+#6. inventory file
+
+- name: variables from arguments
+  hosts: local
+  connection: local
+  tasks:
+  - name: print the course info through args
+    ansible.builtin.debug:
+      msg: "course : {{ COURSE }},
+            duration : {{ DURATION }},
+            trainer : {{ TRAINER }}"
