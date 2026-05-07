@@ -4,10 +4,10 @@
   become: yes
   vars:
     skills: Linux, Ansible, Python, Docker
-    name: Shankar.Ellamma
+    fname: Shankar.Ellamma
     gmail: info@gmail.com
     IPaddress: "19222.168.1.100"
-    tags:
+    tags_list:
       application: payment
       environment: dev
     listtags:
@@ -28,7 +28,7 @@
   #dictionary to list
   - name: converting dictionary to list
     ansible.builtin.debug:
-      msg: "Tags: {{ tags | dict2items }}"
+      msg: "Tags: {{ tags_list | dict2items }}"
 
   #list to dictionary
   - name: converting list to dictionary
