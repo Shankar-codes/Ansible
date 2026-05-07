@@ -1,5 +1,6 @@
 - name: ping the server
-  hosts: all #which server to ping
+  hosts: new_server #which server to ping
+  become: yes #to run the tasks with root privileges
   #list of tasks to execute on the server
   tasks:
   - name: ping the server 
