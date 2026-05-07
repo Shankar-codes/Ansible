@@ -11,5 +11,5 @@
   # start nginx service
   - name: start nginx service
     ansible.builtin.service:
-    name: nginx
-    state: started
+      name: nginx
+      state: started
