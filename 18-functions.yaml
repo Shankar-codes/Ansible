@@ -54,7 +54,7 @@
   #convert to upper case
   - name: convert to upper case
     ansible.builtin.debug:
-      msg: "Upper case: {{ name | upper }}"
+      msg: "Upper case: {{ fname | upper }}"
 
   #convert to lower case
   - name: convert to lower case
