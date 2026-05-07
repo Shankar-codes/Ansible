@@ -1,6 +1,7 @@
 - name: functions
   hosts: local
   connection: local
+  become: yes
   vars:
     skills: Linux, Ansible, Python, Docker
     name: Shankar.Ellamma
@@ -47,9 +48,8 @@
   #convert json to file
   - name: convert json to file
     ansible.builtin.copy:
-      dest: "./data.json"
+      dest: ./data.json
       content: "{{ yaml_data | to_nice_json }}"
-      
 
   #convert to upper case
   - name: convert to upper case
