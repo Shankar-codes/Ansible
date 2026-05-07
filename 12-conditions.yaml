@@ -4,10 +4,10 @@
 
   vars:
     number: 20
-
+  
   tasks:
     - name: check the number less than 20 or not
       ansible.builtin.debug:
-        msg: "the number {{ number }} is less than 20"
-
-      when: number < 10
+        msg: "the number is {{ number }} is less than 20"
+  
+      when: number < 25
