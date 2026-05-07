@@ -1,5 +1,6 @@
 - name: install nginx package
-  hosts: frontend #which server to install nginx package
+  hosts: new_server #which server to install nginx package
+  become: yes #to run the tasks with root privileges
   #list of tasks to execute on the server
   tasks:
   # install nginx package
