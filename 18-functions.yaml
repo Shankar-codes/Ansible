@@ -47,7 +47,7 @@
   #convert json to file
   - name: convert json to file
     ansible.builtin.copy:
-      dest: ./stundent-data.json
+      dest: "./data.json"
       content: "{{ yaml_data | to_nice_json }}"
       
 
