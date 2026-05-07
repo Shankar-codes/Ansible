@@ -1,5 +1,5 @@
 - name : play 01
-  hosts : frontend
+  hosts : new_server
   tasks:
     - name : play o1 and task 01
       ansible.builtin.debug:
@@ -10,7 +10,7 @@
         msg: "Hello from play 01 and task 02"
 
 - name : play 02 and task 01
-  hosts : frontend
+  hosts : new_server
   tasks:
     - name : play 02 and task 01
       ansible.builtin.debug:
