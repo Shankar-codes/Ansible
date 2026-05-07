@@ -7,4 +7,3 @@
     - name: facts
       ansible.builtin.debug:
         msg: "The details of the system are {{ ansible_facts }}"
-	
