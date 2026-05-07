@@ -4,8 +4,9 @@
   #collecting variables from the user input
   vars_prompt:
   - name: username
-    prompt: what is your username?
+    prompt: Enter your username
     private: false
+
   - name: password
     prompt: provide the password?
     private: true
