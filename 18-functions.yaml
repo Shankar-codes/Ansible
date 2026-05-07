@@ -47,7 +47,9 @@
   #convert json to file
   - name: convert json to file
     ansible.builtin.copy:
+      dest: ./stundent-data.json
       content: "{{ yaml_data | to_nice_json }}"
+      
 
   #convert to upper case
   - name: convert to upper case
