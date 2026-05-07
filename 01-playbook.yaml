@@ -5,7 +5,6 @@
   tasks:
   - name: ping the server 
     ansible.builtin.ping:
-      msg: "The server is up and running"
   - name: check the connectivity to the server
     ansible.builtin.debug:
       msg: "Hello from the server"
